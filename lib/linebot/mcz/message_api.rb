@@ -2,9 +2,11 @@ module Linebot
   module Mcz
     class MessageApi
       def initialize
+        logger = ::Logger.new(STDOUT)
+        logger.level = ::Logger::INFO
         @conn = Faraday::Connection.new(url: 'https://trialbot-api.line.me/v1/events') do |faraday|
           faraday.request  :url_encoded
-          faraday.response :logger
+          faraday.response :logger, logger
           faraday.adapter  Faraday.default_adapter
           faraday.proxy ENV.fetch('HEROKU_PROXY')
         end
