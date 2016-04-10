@@ -4,7 +4,7 @@ module Linebot
       def initialize
         @conn = Faraday::Connection.new(url: 'https://www.googleapis.com/customsearch/v1') do |faraday|
           faraday.request  :url_encoded
-          faraday.response :logger
+          faraday.response :logger, Linebot::Mcz::Logger.new
           faraday.adapter  Faraday.default_adapter
         end
       end
