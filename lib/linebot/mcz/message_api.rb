@@ -6,7 +6,7 @@ module Linebot
           faraday.request  :url_encoded
           faraday.response :logger, Linebot::Mcz::Logger.new
           faraday.adapter  Faraday.default_adapter
-          faraday.proxy ENV.fetch('HEROKU_PROXY')
+          # faraday.proxy ENV.fetch('HEROKU_PROXY')
         end
       end
 
