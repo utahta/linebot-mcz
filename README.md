@@ -11,4 +11,4 @@ This bot returns images of Momoiro Clover Z.
 - `LINE_TRUSTED_USER_WITH_ACL`
 - `GOOGLE_CUSTOM_API_ID`
 - `GOOGLE_CUSTOM_API_KEY`
-- `HEROKU_PROXY`
+- `REDIS_URL`
