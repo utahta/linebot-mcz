@@ -11,9 +11,9 @@ require 'linebot/mcz/scheduler/post_image'
 Dotenv.load
 
 Sidekiq.configure_client do |config|
-  config.redis = { url: ENV.fetch('REDIS_URL'), namespace: ENV.fetch('LINEBOT_MCZ_ENV') }
+  config.redis = { url: ENV.fetch('REDIS_URL'), namespace: ENV.fetch('RACK_ENV') }
 end
 
 Sidekiq.configure_server do |config|
-  config.redis = { url: ENV.fetch('REDIS_URL'), namespace: ENV.fetch('LINEBOT_MCZ_ENV') }
+  config.redis = { url: ENV.fetch('REDIS_URL'), namespace: ENV.fetch('RACK_ENV') }
 end
