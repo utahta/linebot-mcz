@@ -1,8 +1,6 @@
 $LOAD_PATH.unshift(File.expand_path('../lib', __FILE__)) unless $LOAD_PATH.include?(File.expand_path('../lib', __FILE__))
 require 'bundler/setup'
 require 'sinatra'
-require 'json'
-require 'faraday'
 require 'linebot/mcz'
 
 post '/callback' do

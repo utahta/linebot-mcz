@@ -1,4 +1,6 @@
 require 'logger'
+require 'json'
+require 'faraday'
 require 'sidekiq'
 require 'dotenv'
 require 'linebot/mcz/message_api'
