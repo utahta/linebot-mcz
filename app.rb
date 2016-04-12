@@ -8,8 +8,6 @@ require 'linebot/mcz'
 post '/callback' do
   params = JSON.parse(request.body.read)
   params['result'].each do |msg|
-    message_api = Linebot::Mcz::MessageApi.new
-
     member = %w(玉井詩織 百田夏菜子 有安杏果 佐々木彩夏 高城れに)
     search_word = nil
     search_word = member.sample if msg['content']['text'].match(/誰(か|でも)/)
@@ -19,15 +17,7 @@ post '/callback' do
     search_word = member[3] if msg['content']['text'].match(/佐々木|[さサ][さサ][きキ]|[あア][やヤ][かカ]|彩夏|[あア]ー[りリ][んン]/)
     search_word = member[4] if msg['content']['text'].match(/高城|[たタ][かカ][ぎギ]|[れレ][にニ]/)
 
-    if search_word
-      google_custom_api = Linebot::Mcz::GoogleCustomApi.new
-      original_content_url, preview_image_url = google_custom_api.search_image(search_word)
-      message_api.post_image([msg['content']['from']], original_content_url, preview_image_url)
-    else
-      kwkm = Linebot::Mcz::Kwkm.new
-      original_content_url, preview_image_url = kwkm.image
-      message_api.post_image([msg['content']['from']], original_content_url, preview_image_url)
-    end
+    Linebot::Mcz::Scheduler::PostImage.perform_async([msg['content']['from']], search_word)
   end
   'OK'
 end
