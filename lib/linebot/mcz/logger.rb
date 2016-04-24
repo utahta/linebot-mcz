@@ -3,7 +3,7 @@ module Linebot
     class Logger < ::Logger
       def initialize
         super(STDOUT)
-        self.level = WARN
+        self.level = INFO
       end
     end
   end

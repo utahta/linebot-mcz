@@ -2,15 +2,16 @@ module Linebot
   module Mcz
     class MessageApi
       def initialize
+        @logger = Linebot::Mcz::Logger.new
         @conn = Faraday::Connection.new(url: 'https://trialbot-api.line.me/v1/events') do |faraday|
           faraday.request  :url_encoded
-          faraday.response :logger, Linebot::Mcz::Logger.new
+          faraday.response :logger, @logger
           faraday.adapter  Faraday.default_adapter
-          # faraday.proxy ENV.fetch('HEROKU_PROXY')
         end
       end
 
       def post_text(to, text)
+        @logger.info("to:#{to} text:#{text}")
         request_content = create_request_content(to, { contentType: 1, toType: 1, text: text })
         @conn.post do |req|
           req.headers.update(headers_hash)
@@ -19,6 +20,7 @@ module Linebot
       end
 
       def post_image(to, original_content_url, preview_image_url)
+        @logger.info("to:#{to}")
         request_content = create_request_content(to, {
             contentType: 2,
             toType: 1,
