@@ -1,14 +1,8 @@
 # LINE Bot
 
-This bot returns images of Momoiro Clover Z.
+- Notify Momoiro Clover Z information to LINE.
+- Returns images of Momoiro Clover Z in LINE.
 
-# Requirements
+# Dependencies
 
-### Environment variables
-
-- `LINE_CHANNEL_ID`
-- `LINE_CHANNEL_SECRET`
-- `LINE_CHANNEL_MID`
-- `GOOGLE_CUSTOM_API_ID`
-- `GOOGLE_CUSTOM_API_KEY`
-- `REDIS_URL`
+- Using [mczchannel](https://github.com/utahta/mczchannel) database.

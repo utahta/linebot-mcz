@@ -13,6 +13,10 @@ post '/callback' do
 
   receive_request.data.each do |message|
     case message.content
+      when Line::Bot::Operation::AddedAsFriend
+        Linebot::Mcz::Scheduler::AddUser.perform_async(message.from_mid)
+      when Line::Bot::Operation::BlockedAccount
+        Linebot::Mcz::Scheduler::DeleteUser.perform_async(message.from_mid)
       when Line::Bot::Message::Text
         member = %w(玉井詩織 百田夏菜子 有安杏果 佐々木彩夏 高城れに)
         text = message.content[:text]
