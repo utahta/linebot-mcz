@@ -1,7 +1,8 @@
 module Linebot
   module Mcz
     module Model
-      class User <  ActiveRecord::Base
+      class Channel <  ActiveRecord::Base
+        has_many :channel_item
       end
     end
   end

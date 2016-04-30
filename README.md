@@ -1,8 +1,8 @@
 # LINE Bot
 
 - Notify Momoiro Clover Z information to LINE.
-- Returns images of Momoiro Clover Z.
+- Returns images of Momoiro Clover Z in LINE.
 
-# Requirements
+# Dependencies
 
-- [mczchannel](https://github.com/utahta/mczchannel)
+- Using [mczchannel](https://github.com/utahta/mczchannel) database.
