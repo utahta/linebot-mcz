@@ -1,9 +1,20 @@
+LIB_PATH = File.expand_path('../lib', __FILE__)
+$LOAD_PATH.unshift(LIB_PATH) unless $LOAD_PATH.include?(LIB_PATH)
+require 'bundler/setup'
+require 'linebot/mcz'
+
 namespace :sidekiq do
   desc 'Run sidekiq worker'
   task :run do
-    load_path = File.expand_path('../lib', __FILE__)
     daemon = ENV['daemon'].nil? ? '' : '-d'
     logfile = ENV['log'].nil? ? '' : "-L #{ENV['log']}"
-    system("RUBYLIB=#{load_path} bundle exec sidekiq -r ./lib/linebot/mcz.rb -c 10 #{daemon} #{logfile}")
+    system("RUBYLIB=#{LIB_PATH} bundle exec sidekiq -r ./lib/linebot/mcz.rb -c 10 #{daemon} #{logfile}")
+  end
+end
+
+namespace :notifier do
+  desc 'Notify mcz informations'
+  task :all do
+    Linebot::Mcz::Notifier::Blog.new.notify
   end
 end

@@ -10,6 +10,8 @@ module Linebot
 
         def perform(service)
           @logger.info("received notification from #{service}")
+
+          Linebot::Mcz::Notifier::Blog.new.notify
         end
       end
     end
