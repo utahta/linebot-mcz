@@ -17,6 +17,7 @@ require 'linebot/mcz/scheduler/send_image'
 require 'linebot/mcz/scheduler/add_user'
 require 'linebot/mcz/scheduler/delete_user'
 require 'linebot/mcz/scheduler/notification_receiver'
+require 'linebot/mcz/notifier/blog'
 Dotenv.load
 
 Sidekiq.configure_client do |config|
