@@ -19,6 +19,7 @@ module Linebot
 
           client = Linebot::Mcz::Client.new
           client.send_text(to_mid: mid, text: '通知ノフ設定オンにしました（・Θ・）')
+          @logger.info('通知ノフ設定オンにしました')
         end
       end
     end
