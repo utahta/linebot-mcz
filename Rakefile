@@ -8,7 +8,7 @@ namespace :sidekiq do
   task :run do
     daemon = ENV['daemon'].nil? ? '' : '-d'
     logfile = ENV['log'].nil? ? '' : "-L #{ENV['log']}"
-    system("RUBYLIB=#{LIB_PATH} bundle exec sidekiq -r ./lib/linebot/mcz.rb -c 10 #{daemon} #{logfile}")
+    system("RUBYLIB=#{$LOAD_PATH.join(':')} bundle exec sidekiq -r ./lib/linebot/mcz.rb -c 10 #{daemon} #{logfile}")
   end
 end
 
