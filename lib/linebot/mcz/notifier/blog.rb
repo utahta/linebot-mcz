@@ -16,7 +16,7 @@ module Linebot
           blog_items.each do |item|
             item.lined_at = lined_at
             item.save!
-            client.send_text(to_mid: to_mid, text: "#{item.title}\n#{item.url}")
+            client.send_text(to_mid: to_mid, text: "#{item.channel.title}\n#{item.title}\n#{item.url}")
           end
         end
 

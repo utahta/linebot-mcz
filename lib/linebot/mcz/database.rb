@@ -9,6 +9,7 @@ module Linebot
             password: ENV.fetch('DB_PASSWORD'),
             database: ENV.fetch('DB_NAME'),
         )
+        ActiveRecord::Base.default_timezone = :local
       end
     end
   end
