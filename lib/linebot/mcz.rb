@@ -3,12 +3,17 @@ require 'json'
 require 'faraday'
 require 'sidekiq'
 require 'dotenv'
+require 'active_record'
 require 'line/bot'
 require 'linebot/mcz/client'
 require 'linebot/mcz/google_custom_api'
 require 'linebot/mcz/kwkm'
 require 'linebot/mcz/logger'
+require 'linebot/mcz/database'
+require 'linebot/mcz/model/user'
 require 'linebot/mcz/scheduler/send_image'
+require 'linebot/mcz/scheduler/add_user'
+require 'linebot/mcz/scheduler/delete_user'
 Dotenv.load
 
 Sidekiq.configure_client do |config|
