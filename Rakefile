@@ -14,7 +14,12 @@ end
 
 namespace :notifier do
   desc 'Notify mcz informations'
-  task :all do
+  task :info do
     Linebot::Mcz::Notifier::ChannelItems.new.notify
+  end
+
+  desc 'Remind mcz schedule'
+  task :remind do
+    Linebot::Mcz::Notifier::Remind.new.notify
   end
 end
