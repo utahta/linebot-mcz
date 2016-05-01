@@ -7,12 +7,14 @@ module Linebot
           to_mid = mid.nil? ? user_mids : mid
 
           load_ustream_status
-          if on_air? && @status == 'offline'
-            Linebot::Mcz.client.send_text(
-                to_mid: to_mid,
-                text: 'momoclotv が配信を開始しました'
-            )
-            @status = 'live'
+          if on_air?
+            if @status == 'offline'
+              Linebot::Mcz.client.send_text(
+                  to_mid: to_mid,
+                  text: 'momoclotv が配信を開始しました'
+              )
+              @status = 'live'
+            end
           else
             @status = 'offline'
           end
