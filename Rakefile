@@ -15,6 +15,6 @@ end
 namespace :notifier do
   desc 'Notify mcz informations'
   task :all do
-    Linebot::Mcz::Notifier::Blog.new.notify
+    Linebot::Mcz::Notifier::ChannelItems.new.notify
   end
 end

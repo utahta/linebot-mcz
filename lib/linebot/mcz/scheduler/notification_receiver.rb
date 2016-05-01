@@ -11,7 +11,7 @@ module Linebot
         def perform(service)
           @logger.info("received notification from #{service}")
 
-          Linebot::Mcz::Notifier::Blog.new.notify
+          Linebot::Mcz::Notifier::ChannelItems.new.notify
         end
       end
     end
