@@ -22,4 +22,9 @@ namespace :notifier do
   task :remind do
     Linebot::Mcz::Notifier::Remind.new.notify
   end
+
+  desc 'Notify momoclotv'
+  task :ustream do
+    Linebot::Mcz::Notifier::Ustream.new.notify
+  end
 end

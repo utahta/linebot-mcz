@@ -19,6 +19,7 @@ require 'linebot/mcz/scheduler/delete_user'
 require 'linebot/mcz/scheduler/notification_receiver'
 require 'linebot/mcz/notifier/channel_items'
 require 'linebot/mcz/notifier/remind'
+require 'linebot/mcz/notifier/ustream'
 Dotenv.load
 
 Sidekiq.configure_client do |config|
