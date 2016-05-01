@@ -7,6 +7,7 @@ module Linebot
         end
 
         def notify(mid = nil)
+          Linebot::Mcz::Database.connect
           to_mid = mid.nil? ? user_mids : mid
 
           if in_happy_clover?
