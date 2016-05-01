@@ -18,6 +18,7 @@ require 'linebot/mcz/scheduler/add_user'
 require 'linebot/mcz/scheduler/delete_user'
 require 'linebot/mcz/scheduler/notification_receiver'
 require 'linebot/mcz/notifier/channel_items'
+require 'linebot/mcz/notifier/remind'
 Dotenv.load
 
 Sidekiq.configure_client do |config|
@@ -26,4 +27,16 @@ end
 
 Sidekiq.configure_server do |config|
   config.redis = { url: ENV.fetch('REDIS_URL'), namespace: ENV.fetch('RACK_ENV') }
+end
+
+module Linebot
+  module Mcz
+    def self.client
+      @client ||= Linebot::Mcz::Client.new
+    end
+
+    def self.logger
+      @logger ||= Linebot::Mcz::Logger.new
+    end
+  end
 end
