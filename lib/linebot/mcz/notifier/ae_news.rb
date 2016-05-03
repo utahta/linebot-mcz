@@ -1,11 +1,11 @@
 module Linebot
   module Mcz
     module Notifier
-      class ChannelItems
+      class AeNews
         def notify(mid = nil)
           Linebot::Mcz::Database.connect
 
-          to_mid = mid.nil? ? user_mids : mid
+          to_mid = mid.nil? ? Linebot::Mcz::Model::User.to_mid : mid
 
           lined_at = DateTime.now
           channel_items.each do |item|
@@ -18,11 +18,7 @@ module Linebot
         private
 
         def channel_items
-          Linebot::Mcz::Model::ChannelItem.joins(:channel).where(lined_at: nil)
-        end
-
-        def user_mids
-          Linebot::Mcz::Model::User.all.pluck(:mid)
+          Linebot::Mcz::Model::ChannelItem.joins(:channel).where('channels.code = ?', 'ae-news').where(lined_at: nil)
         end
       end
     end

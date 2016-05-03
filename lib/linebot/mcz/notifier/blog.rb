@@ -5,11 +5,10 @@ module Linebot
         def notify(mid = nil)
           Linebot::Mcz::Database.connect
 
-          # to_mid = mid.nil? ? Linebot::Mcz::Model::User.to_mid : mid
-          to_mid = mid
+          to_mid = mid.nil? ? Linebot::Mcz::Model::User.to_mid : mid
 
           lined_at = DateTime.now
-          blog_items.each do |item|
+          channel_items.each do |item|
             item.lined_at = lined_at
             item.save!
 
@@ -24,7 +23,7 @@ module Linebot
 
         private
 
-        def blog_items
+        def channel_items
           codes = %w(tamai-sd momota-sd ariyasu-sd sasaki-sd takagi-sd)
           Linebot::Mcz::Model::ChannelItem.joins(:channel).where('channels.code in (?)', codes).where(lined_at: nil)
         end
