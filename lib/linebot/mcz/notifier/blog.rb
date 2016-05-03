@@ -15,7 +15,7 @@ module Linebot
 
             message = Linebot::Mcz.client.multiple_message
             message.add_text(text: message_text(item))
-            item.channel_images do |image|
+            item.channel_images.each do |image|
               message.add_image(image_url: image.url, preview_url: image.url)
             end
             message.send(to_mid: to_mid)
