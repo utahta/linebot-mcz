@@ -7,7 +7,9 @@ module Linebot
         def perform(service)
           Linebot::Mcz.logger.info("received notification from #{service}")
 
-          Linebot::Mcz::Notifier::ChannelItems.new.notify
+          Linebot::Mcz::Notifier::Blog.new.notify
+          Linebot::Mcz::Notifier::AeNews.new.notify
+          Linebot::Mcz::Notifier::Youtube.new.notify
         end
       end
     end
