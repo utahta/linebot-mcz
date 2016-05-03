@@ -18,6 +18,7 @@ require 'linebot/mcz/scheduler/add_user'
 require 'linebot/mcz/scheduler/delete_user'
 require 'linebot/mcz/scheduler/notification_receiver'
 require 'linebot/mcz/notifier/channel_items'
+require 'linebot/mcz/notifier/blog'
 require 'linebot/mcz/notifier/remind'
 require 'linebot/mcz/notifier/ustream'
 Dotenv.load
